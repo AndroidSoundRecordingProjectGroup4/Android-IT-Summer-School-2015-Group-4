@@ -1,11 +1,16 @@
 package com.example.leebo.recordsounddemo2;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.media.AudioTrack;
+import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,8 +43,11 @@ public class MainActivity extends ActionBarActivity {
     private ArrayAdapter<String> adapter;
 
     private MediaRecorder mr;
+    private MediaPlayer mp;
+    //    private RecordClass rc=new RecordClass(MainActivity.this);
     private boolean sdCardExit;
     private boolean isStopRecord;
+    private boolean isPlaying;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,61 +73,21 @@ public class MainActivity extends ActionBarActivity {
         /*将ArrayAdapter存入ListView对象中*/
         myListView1.setAdapter(adapter);
 
-        /*record*/
-        start_b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    if (!sdCardExit){
-                        Toast.makeText(MainActivity.this,"There is no SD Card",Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    myRecFile=File.createTempFile("Test",".amr",myRecDir);
-                    mr=new MediaRecorder();
-                    mr.setAudioSource(MediaRecorder.AudioSource.MIC);//从MIC获取声音
-                    mr.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
-                    mr.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-                    mr.setOutputFile(myRecFile.getAbsolutePath());
-
-                    mr.prepare();
-                    mr.start();
-
-                    myText.setText("recording...");
-
-                    play_b.setEnabled(false);
-                    stop_b.setEnabled(true);
-                    delete_b.setEnabled(false);
-
-                    isStopRecord=false;
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        /*stop*/
-        stop_b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (myRecFile!=null){
-                    mr.stop();
-                    /*将录音名给Adapter*/
-                    adapter.add(myRecFile.getName());
-
-                    mr.release();
-                    mr=null;
-                    myText.setText("Stop:"+myRecFile.getName());
-                    stop_b.setEnabled(false);
-                    isStopRecord=true;
-                }
-            }
-        });
         /*play*/
         play_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (myPlayFile!=null&&myPlayFile.exists()){
-                    openFile(myPlayFile);
+//                if (myPlayFile!=null&&myPlayFile.exists()){
+//                    openFile(myPlayFile);
+//                }
+                try{
+                    mp=new MediaPlayer();
+
+                    mp.setDataSource(myPlayFile.getAbsolutePath());
+                    mp.prepare();
+                    mp.start();
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
             }
         });
@@ -198,6 +166,54 @@ public class MainActivity extends ActionBarActivity {
         type+="*";
         return type;
     }
+    public void start_record_b(View v){
+        try {
+            if (!sdCardExit){
+                Toast.makeText(MainActivity.this,"There is no SD Card",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            myRecFile=File.createTempFile("Test",".amr",myRecDir);
+
+            mr=new MediaRecorder();
+            mr.setAudioSource(MediaRecorder.AudioSource.MIC);//从MIC获取声音
+            mr.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
+            mr.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+            mr.setOutputFile(myRecFile.getAbsolutePath());
+
+            mr.prepare();
+            mr.start();
+
+            myText.setText("recording...");
+
+            play_b.setEnabled(false);
+            stop_b.setEnabled(true);
+            delete_b.setEnabled(false);
+
+            isStopRecord=false;
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    public void stop_record_b(View v){
+        if (myRecFile!=null){
+            mr.stop();
+
+            /*将录音名给Adapter*/
+            adapter.add(myRecFile.getName());
+
+            mr.release();
+            mr=null;
+            //todo
+//            addCapturedAudioToMediaStore();
+
+            myText.setText("Stop:"+myRecFile.getName());
+            stop_b.setEnabled(false);
+            isStopRecord=true;
+        }
+    }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -220,4 +236,5 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
