@@ -35,7 +35,8 @@ public class RecordClass {
             mr.release();
             mr=null;
     }
-    public void pause_record(){
+    public void cancel_record(){
+        mr.reset();
     }
 
 }
