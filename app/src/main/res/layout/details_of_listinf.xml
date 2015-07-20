@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="10dp">
+    <TextView
+        android:id="@+id/record_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#ff3333"
+        android:text="Default"/>
+    <TextView
+        android:id="@+id/record_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingRight="20dp"
+        android:textSize="12sp"
+        android:textColor="#ff9966"
+        android:text="time"/>
+    <ImageButton
+        android:id="@+id/delete_item_button"
+        android:layout_height="20dp"
+        android:layout_width="20dp"
+        android:visibility="gone"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/delete"/>
+</RelativeLayout>

@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="J:\AndroidStudioWorkSpace\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\classes.jar"
+        jar="C:\Users\Lee\Desktop\交大夏令营\调试目录\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
-        <dex dex="J:\AndroidStudioWorkSpace\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-81b3c72b358147caa4de1d3c2c1ecc4258386671.jar" />
+        <dex dex="C:\Users\Lee\Desktop\交大夏令营\调试目录\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-bf01289631e6945aeff8fc212aab50df564457f6.jar" />
     </item>
     <item
-        jar="C:\Users\LeeBo\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
-        <dex dex="J:\AndroidStudioWorkSpace\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-6d60c3a5749d166da2fdf5911dfaffb99210d149.jar" />
-    </item>
-    <item
-        jar="J:\AndroidStudioWorkSpace\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
-        <dex dex="J:\AndroidStudioWorkSpace\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-d20f1b14fba4cd0b0093223b9a5b972baa1f4a25.jar" />
-    </item>
-    <item
-        jar="J:\AndroidStudioWorkSpace\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\jars\classes.jar"
+        jar="C:\Users\Lee\Desktop\交大夏令营\调试目录\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
-        <dex dex="J:\AndroidStudioWorkSpace\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-88e279c67a918a74a4ab79a579cbf8e304f583bd.jar" />
+        <dex dex="C:\Users\Lee\Desktop\交大夏令营\调试目录\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-96bb839356b560d6819d9b0c64e0ee7b42701041.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lee\Desktop\交大夏令营\调试目录\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="C:\Users\Lee\Desktop\交大夏令营\调试目录\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-e77d683e0aa998d56a58db18390610adf8850471.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lee\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="C:\Users\Lee\Desktop\交大夏令营\调试目录\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-aa2a33d9302344898798877453933a68d49a48cd.jar" />
     </item>
 
 </items>
