@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="10dp">
+    android:id="@+id/details_r_layout"
+    android:layout_width="fill_parent" android:layout_height="match_parent"
+    android:padding="0dp">
+
     <TextView
         android:id="@+id/record_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:padding = "3dp"
+        android:textSize="26sp"
         android:textColor="#ff3333"
+        android:singleLine="true"
+        android:scrollbars="horizontal"
+        android:maxEms="25"
+        android:ellipsize="end"
         android:text="Default"/>
-    <TextView
-        android:id="@+id/record_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:paddingRight="20dp"
-        android:textSize="12sp"
-        android:textColor="#ff9966"
-        android:text="time"/>
+    <!--<ImageButton-->
+        <!--android:id="@+id/pause_list_b"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:background="@drawable/pause_b"-->
+        <!--android:tag="playing"/>-->
+    <!--<ImageButton-->
+        <!--android:id="@+id/play_list_b"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_toLeftOf="@id/pause_list_b"-->
+        <!--android:layout_marginRight="3dp"-->
+        <!--android:background="@drawable/play_b"/  >-->
+
     <ImageButton
         android:id="@+id/delete_item_button"
-        android:layout_height="20dp"
-        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:layout_width="30dp"
         android:visibility="gone"
         android:layout_alignParentRight="true"
         android:background="@drawable/delete"/>

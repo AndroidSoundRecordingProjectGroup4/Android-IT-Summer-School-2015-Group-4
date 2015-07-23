@@ -5,4 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_player">PlayerActivity</string>
     <string name="title_activity_list">ListActivity</string>
+    <item type="id" name="tag_play_b"></item>
+    <item type="id" name="tag_pause_b"></item>
 </resources>

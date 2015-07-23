@@ -1,18 +1,51 @@
-<menu xmlns:tools="http://schemas.android.com/tools"
+<menu
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-
-     tools:context=".ListActivity">
+     tools:context=".ListActivity"
+    android:id = "@+id/listmenu">
     <!--<item android:id="@+id/action_settings" android:title="@string/action_settings"-->
         <!--android:orderInCategory="100" app:showAsAction="never" />-->
+    <item
+        android:id="@+id/share_button"
+        android:title="Share on Google+"
+        android:icon="@drawable/recording_b"
+        app:showAsAction="always"
+        android:visible="false"
+        />
+
+    <item
+        android:id="@+id/list_search"
+        android:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/search"
+        app:showAsAction="ifRoom"
+        android:title="search"/>
     <item
         android:id="@+id/list_delete"
         android:icon="@drawable/delete"
         android:title="delete"
-        app:showAsAction="always"/>
+        app:showAsAction="always"
+        android:visible="false"/>
     <item
         android:id="@+id/list_rename"
         android:icon="@drawable/rename"
         android:title="rename"
+        app:showAsAction="always"
+        android:visible="false"/>
+    <item
+        android:id="@+id/list_back"
+        android:icon="@drawable/back"
+        android:title="back"
         app:showAsAction="always"/>
+
+    <EditText android:id="@+id/inputSearch"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search recordings..."
+        android:inputType="textVisiblePassword"/>
+    <!--<item-->
+        <!--android:id="@+id/list_rename"-->
+        <!--android:icon="@drawable/rename"-->
+        <!--android:title="rename"-->
+        <!--app:showAsAction="always"/>-->
 </menu>

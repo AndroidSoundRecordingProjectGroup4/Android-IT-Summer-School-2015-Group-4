@@ -2,17 +2,31 @@ package com.example.leebo.recordsounddemo2;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
+import android.app.Service;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.SimpleAdapter;
 
 import java.io.ByteArrayOutputStream;
@@ -22,171 +36,350 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.WeakHashMap;
+import java.util.logging.LogRecord;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.Scopes;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.plus.Plus;
+//import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
+//import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.android.gms.plus.PlusShare;
 
 public class ListActivity extends ActionBarActivity {
-    private ListView lv;
+    private ListView lv;//files list
+    private int positonX = -1 ;
+    private int fposition = 0;
+    private boolean longclick = false;
+    private File deleteFile;
+//    private File control_file;
+    private FilesInf control_file;
+    private String control_path = null;
+    private SeekBar seekBar;//progress bar
     private MediaPlayer mp;
-    private String reName=null;
-    static public ArrayList<FilesInf> filesName = new ArrayList<FilesInf>();
+    private AudioManager audioManager; //sound
+    private ArrayList<FilesInf> data=new ArrayList<FilesInf>() ;
+    private String reName=null;// new name
+    private String share_nam=null;
+    private TextView playtime_t;//current time
+    private TextView totaltime_t;//total time
+    private int maxPro;// 进度条显示最大值
+    private int currentPro = 0;// 进度条当前值
+    private boolean stopThread = false;// 是否停止进度条更新
+    private TextView musicDesTextView;// 歌曲名称
+    private ImageView imageView;//歌曲专辑封面
+    private ToggleButton tbMute;//静音/正常
+    private ImageButton preButton;// 上一首
+    private ImageButton nextButton;// 下一首
+    private ImageButton playButton;// 播放
+    private ImageButton pauseButton;// 暂停
+    private SimpleAdapter simpleAdapter;
+    private Scan sc;
+    private Handler handler;
+
+//    private MyListAdapter adapter;
+//    private ImageButton play_pause;
+//    private ImageButton play_stop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-//        getSupportActionBar().hide();
 
+     //   GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
+       //         .addApi(Plus.API)
+       //         .addScope(Scopes.PLUS_LOGIN)
+      //          .build();
 
-
-        lv = (ListView)findViewById(R.id.list_of_records);
-        ArrayList<FilesInf> arr_files=(ArrayList<FilesInf>)getIntent().getSerializableExtra("key");
-        final ArrayList<HashMap<String,String>> listItem = new ArrayList<HashMap<String,String>>();
-        ArrayList<String> pathinf = new ArrayList<String>();
-
-        for(FilesInf mfilesinf:arr_files){
-            HashMap<String,String> map = new HashMap<String,String>();
-            mp = new MediaPlayer();
-            try {
-                mp.setDataSource(mfilesinf.filepath);
-            }catch (IOException e){
-                e.printStackTrace();
+        handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                currentPro = msg.what;
+                if(currentPro<maxPro){
+                    seekBar.setProgress(currentPro);
+                    playtime_t.setText(formatDuring(currentPro));
+                }
+                super.handleMessage(msg);
             }
-            int soundTime = mp.getDuration()/1000;
-            String sTime = (soundTime/60+":"+soundTime%60);
-            map.put("name", mfilesinf.filename);
-            map.put("path", mfilesinf.filepath);
-            map.put("time", sTime);
+        };
 
-            listItem.add(map);
-            pathinf.add(mfilesinf.filepath);
+        initView();
+    }
+
+
+
+    /*initialize*/
+    private void initView() {
+//        NotificationManager mNotificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE) ;
+        mp = new MediaPlayer();
+        sc = new Scan();
+        lv = (ListView) findViewById(R.id.list_of_records);
+        audioManager=(AudioManager)getSystemService(Service.AUDIO_SERVICE);
+        seekBar = (SeekBar)findViewById(R.id.play_seekbar);
+        musicDesTextView = (TextView) findViewById(R.id.musicdes);
+        playtime_t = (TextView)findViewById(R.id.playtime);
+        totaltime_t = (TextView)findViewById(R.id.alltime);
+        tbMute=(ToggleButton)findViewById(R.id.tbMute);
+//        preButton = (ImageButton) findViewById(R.id.preButton);
+//        nextButton = (ImageButton) findViewById(R.id.nextButton);
+        playButton = (ImageButton) findViewById(R.id.playButton);
+        pauseButton = (ImageButton) findViewById(R.id.pauseButton);
+        data.clear();
+        data = sc.simpleScanning(new File(Environment.getExternalStorageDirectory() + "/myRecordDir"));
+
+        setListView();
+        //move the seekbar
+        seekBar.setSelected(false);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                currentPro = seekBar.getProgress();
+                mp.seekTo(currentPro);
+                playtime_t.setText(formatDuring(currentPro));
+                mp.start();
+            }
+        });
+        //play
+        playButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                playButton.setVisibility(View.GONE);
+                pauseButton.setVisibility(View.VISIBLE);
+                mp.start();
+            }
+        });
+        //pause
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                pauseButton.setVisibility(View.GONE);
+                playButton.setVisibility(View.VISIBLE);
+                mp.pause();
+            }
+        });
+        //Mute
+        tbMute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                audioManager.setStreamMute(AudioManager.STREAM_MUSIC, !isChecked); //设置是否静音
+            }
+        });
+//        adapter = new MyListAdapter(this,seekBar);
+//        lv.setAdapter(adapter);
+    }
+
+    private void setListView() {
+        // TODO Auto-generated method stub
+        // 获取音频文件数据
+        ArrayList<HashMap<String,Object>> recordsInf = new ArrayList<HashMap<String,Object>>();
+        int r_length = data.size();
+        for(int i=0;i<r_length;i++){
+            HashMap<String,Object> map = new HashMap<String,Object>();
+            map.put("name",data.get(i).filename);
+            map.put("delete",R.drawable.delete);
+            recordsInf.add(map);
         }
-        final SimpleAdapter simpleAdapter = new SimpleAdapter(this,listItem,R.layout.details_of_listinf,new String[]{"name","time"},new int[]{R.id.record_name,R.id.record_time});
+        simpleAdapter = new SimpleAdapter(this,recordsInf,R.layout.details_of_listinf,new String[]{"name","delete"},new int[]{R.id.record_name,R.id.delete_item_button});
         lv.setAdapter(simpleAdapter);
 
-        /*play the record when click it*/
+        /*play when click item*/
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                setTitle(listItem.get(position).get("path"));
-                try {
-                    mp = new MediaPlayer();
-                    mp.setDataSource(listItem.get(position).get("path"));
-                    mp.prepare();
-                    mp.start();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+
+                playRecord(data.get(position).filepath);
+//                notification.tickerText = "playing:";
             }
         });
-
+        /*rename or delete when long click item*/
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view,final int position, long id) {
-//                getSupportActionBar().show();
-                final EditText inputServer = new EditText(ListActivity.this);
-                inputServer.setFocusable(true);
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
-                builder.setTitle("Rename").setView(inputServer).setNegativeButton(
-                        "cancel", null);
-                builder.setPositiveButton("save",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                reName = inputServer.getText().toString();
-                                listItem.get(position).get("name").replace(listItem.get(position).get("name"), reName);
-                                File tf = new File(listItem.get(position).get("path"));
-                                tf.renameTo(new File(Environment.getExternalStorageDirectory() + "/myRecordDir/" + reName + ".amr"));
-                                lv.setAdapter(simpleAdapter);
-                            }
-                        });
-                builder.show();
-
-                return false;
+                longclick=true;
+                invalidateOptionsMenu();
+                control_path = data.get(position).filepath;
+                share_nam = data.get(position).filename;
+                control_file = data.get(position);
+                fposition = position;
+                return true;
             }
         });
-    }
-    public static void simpleScanning(File folder) {
-        //指定正则表达式
-        Pattern mPattern = Pattern.compile("([^\\.]*)\\.([^\\.]*)");
-        // 当前目录下的所有文件
-        final String[] filenames = folder.list();
-        // 当前目录的名称
-        //final String folderName = folder.getName();
-        // 当前目录的绝对路径
-        //final String folderPath = folder.getAbsolutePath();
-        if (filenames != null) {
-            // 遍历当前目录下的所有文件
-            for (String name : filenames) {
-                File file = new File(folder, name);
-                // 如果是文件夹则继续递归当前方法
-                if (file.isDirectory()) {
-                    simpleScanning(file);
-                }
-                // 如果是文件则对文件进行相关操作
-                else {
-                    Matcher matcher = mPattern.matcher(name);
-                    if (matcher.matches()) {
-                        // 文件名称
-                        String fileName = matcher.group(1);
-                        // 文件后缀
-                        String fileExtension = matcher.group(2);
-                        // 文件路径
-                        String filePath = file.getAbsolutePath();
+//        for (int i = 0;i<lv.getChildCount();i++){
+//            lv.getChildAt(1).setVisibility(View.VISIBLE);
+//        lv.getFocusedChild().findViewById(R.id.delete_item_button).setVisibility(View.VISIBLE);
+//        }
+//        /*slide to left to delete*/
+//        lv.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                switch (event.getAction()) {
+//                    case MotionEvent.ACTION_DOWN:
+//                        positonX =(int) event.getX();//开始记录  按下的位置,用于与后面的事件发生位置对比
+//                        holder.button_delete.setVisibility(View.GONE) ;
+//                        break;
+//                    case MotionEvent.ACTION_MOVE:
+//                        if(positonX-event.getX()>80){//左移事件
+//                            holder.button_delete.setVisibility(View.VISIBLE) ;
+//                        }
+//                        break;
+//
+//                    return false;
+//            }
+//        });
 
-                        if (fileExtension.toLowerCase().equals("amr")) {
-                            FilesInf tempF = new FilesInf();
-                            tempF.filename=fileName;
-                            tempF.filepath=filePath;
-                            filesName.add(tempF);
+    }
+    /*play*/
+    public void playRecord(String f){
+        try {
+            mp.reset();
+            mp.setDataSource(f);
+            mp.prepare();
+            totaltime_t.setText(formatDuring(mp.getDuration()));
+            playtime_t.setText("0:0:0");
+            mp.start();
+            mp.seekTo(0);
+            maxPro = (Integer) mp.getDuration();
+            currentPro = 0;
+            seekBar.setMax(maxPro);
+            seekBar.setProgress(currentPro);
+            //set seekbar
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    while (currentPro<maxPro){
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
+                        if(!stopThread){
+                            Message msg = new Message();
+                            msg.what = mp.getCurrentPosition();
+                            ListActivity.this.handler.sendMessage(msg);
+                        }else
+                            break;
                     }
                 }
-            }
+            }).start();
+            //show the information of record
+            musicDesTextView.setText(new File(f).getName());
+            playButton.setVisibility(View.GONE);
+            pauseButton.setVisibility(View.VISIBLE);
+        }catch (IOException e){
+            e.printStackTrace();
+        }catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
         }
     }
-//    /*readFile*/
-//    private String readFile(String filename) {
-//        String reads = "";
-//        try {
-//            FileInputStream fis = this.openFileInput(filename);
-//            byte[] b = new byte[1024];
-//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//            while (fis.read(b) != -1) {
-//                baos.write(b, 0, b.length);
-//            }
-//            baos.close();
-//            fis.close();
-//            reads = baos.toString();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return reads;
-//    }
-//    /*saveFile*/
-//    private void saveFile(String str, String filename) {
-//        FileOutputStream fos;
-//        try {
-//            fos = this.openFileOutput(filename, this.MODE_PRIVATE);
-//            fos.write(str.getBytes());
-//            fos.flush();
-//            fos.close();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    /*rename*/
+    public void renameRecord(final String path,final FilesInf f){
+        final EditText inputServer = new EditText(this);
+        inputServer.setFocusable(true);
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Rename").setView(inputServer).setNegativeButton(
+                "cancel", null);
+        builder.setPositiveButton("save",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+//                        File rn = new File(path);
+                        reName = inputServer.getText().toString();
+//                        f.filename.replace(f.filename, reName);
+
+                        File tf = new File(path);
+                        tf.renameTo(new File(Environment.getExternalStorageDirectory() + "/myRecordDir/" + reName + ".amr"));
+                        data.clear();
+                        data = sc.simpleScanning(new File(Environment.getExternalStorageDirectory() + "/myRecordDir"));
+                        simpleAdapter.notifyDataSetChanged();
+                        setListView();
+
+                    }
+                });
+        builder.show();
+        longclick=false;
+        control_path = null;
+        invalidateOptionsMenu();
+    }
+    /*delete*/
+    public void deleteRecord(final String path,int p){
+        deleteFile = new File(path);
+        if (deleteFile.exists())
+            deleteFile.delete();
+        longclick=false;
+        control_path = null;
+        data.remove(p);
+        invalidateOptionsMenu();
+        setListView();
+        simpleAdapter.notifyDataSetChanged();
+    }
+
+    public void shareRecord(){
+        // Launch the Google+ share dialog with attribution to your app.
+        Intent shareIntent = new PlusShare.Builder(this)
+                .setType("text/plain")
+                .setText("I am using Group 4's recording application for Android, it is really great! I have made " + data.size() + " recordings. I am listening to "+share_nam )
+                .setContentUrl(Uri.parse("changethislink.com")) //we will change this to be either a download to the recording or to an apk download
+                .getIntent();
+        startActivityForResult(shareIntent, 0);
+    }
+
+    /*change to time*/
+    public static String formatDuring(long mss) {
+        long hours = (mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
+        long minutes = (mss % (1000 * 60 * 60)) / (1000 * 60);
+        long seconds = (mss % (1000 * 60)) / 1000;
+        return hours + ":" + minutes + ":" + seconds;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_list, menu);
+        MenuItem list_delete_i = menu.findItem(R.id.list_delete);
+        MenuItem list_rename_i = menu.findItem(R.id.list_rename);
+        MenuItem list_search_i = menu.findItem(R.id.list_search);
+        MenuItem share_b = menu.findItem(R.id.share_button);
+        if(longclick==true){
+            list_delete_i.setVisible(true);
+            list_rename_i.setVisible(true);
+            list_search_i.setVisible(false);
+            share_b.setVisible(true);
+        }else{
+            list_delete_i.setVisible(false);
+            list_rename_i.setVisible(false);
+            list_search_i.setVisible(true);
+            share_b.setVisible(false);
+        }
         return true;
     }
 
@@ -196,10 +389,17 @@ public class ListActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
+            case R.id.list_back:
+                finish();
+                return true;
             case R.id.list_delete:
+                deleteRecord(control_path,fposition);
                 return true;
             case R.id.list_rename:
+                renameRecord(control_path,control_file);
                 return true;
+            case R.id.share_button:
+                shareRecord();
         }
         int id = item.getItemId();
 

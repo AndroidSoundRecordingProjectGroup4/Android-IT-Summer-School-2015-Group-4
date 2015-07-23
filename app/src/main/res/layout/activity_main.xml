@@ -10,23 +10,52 @@
         android:paddingRight="0dp"
         android:paddingTop="0dp"
         android:paddingBottom="0dp" tools:context=".MainActivity">
-        <ImageButton
-            android:id="@+id/start_img_b"
-            android:layout_height="200dp"
-            android:layout_width="200dp"
-            android:background="@drawable/start_b_img"
-            android:layout_marginTop="50dp"
-            android:layout_centerHorizontal="true"
-            android:onClick="start_record_b"/>
         <Chronometer
             android:id="@+id/timer_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_below="@id/start_img_b"
+            android:layout_marginTop="40dp"
             android:layout_centerHorizontal="true"
-            android:textSize="50dp"
+            android:textSize="60dp"
             />
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:id="@+id/progress_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="false"
+            android:progress="50"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/timer_text"
+            android:clickable="false"
+            android:focusable="false"
+            android:longClickable="false"
+            android:nestedScrollingEnabled="true"
+            android:minWidth="300dp"
+            android:visibility="invisible"
+            />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timer_text">
+            <ImageButton
+                android:id="@+id/start_img_b"
+                android:layout_height="200dp"
+                android:layout_width="200dp"
+                android:background="@drawable/start_b_img"
+
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"
+                android:onClick="start_record_b"/>
+            <ImageView
+                android:id="@+id/slid_left"
+                android:layout_height="50dp"
+                android:layout_width="50dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/skip"/>
+        </RelativeLayout>
         <RelativeLayout
             android:id="@+id/r2"
             android:layout_width="fill_parent"
@@ -37,45 +66,30 @@
                 android:id="@+id/cancel_b"
                 android:layout_height="60dp"
                 android:layout_width="60dp"
-                android:layout_marginLeft="70dp"
+                android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/cancel_button"
                 android:onClick="cancel_record_b"/>
-            <ImageButton
-                android:id="@+id/stop_b"
-                android:layout_height="60dp"
-                android:layout_width="60dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/save_button"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="70dp"
-                android:text="stop"
-                android:onClick="stop_record_b"/>
+            <!--<ImageButton-->
+                <!--android:id="@+id/stop_b"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_marginBottom="40dp"-->
+                <!--android:background="@drawable/save_button"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginRight="70dp"-->
+                <!--android:text="stop"-->
+                <!--android:onClick="stop_record_b"/>-->
 
-            <Button
-                android:id="@+id/delete_b"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="delete"
-                android:layout_below="@id/stop_b"
-                android:onClick="delete_record_b"
-                android:visibility="gone"/>
-            <!--<Button-->
-                <!--android:id="@+id/list_b"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:text="list"-->
-                <!--android:layout_below="@id/stop_b"-->
-                <!--android:layout_toRightOf="@id/delete_b"-->
-                <!--android:onClick="show_list_b"/>-->
             <TextView
                 android:id="@+id/tips"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/delete_b"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@id/cancel_b"
+                android:textSize="12sp"
+                android:layout_marginBottom="10dp"
                 android:layout_centerHorizontal="true"/>
         </RelativeLayout>
 
@@ -92,7 +106,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Set Record Name"
+            android:background="#ff0000"
             android:textSize="16sp"
+            android:paddingRight="3dp"
+            android:paddingLeft="3dp"
             android:onClick="left_set_name"/>
         <Button
             android:id="@+id/left_addtime"
@@ -100,18 +117,46 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/left_setname"
             android:layout_marginTop="15dp"
+            android:background="#ff0000"
             android:textSize="16sp"
-            android:text="Add Time For Record Or Not"
+            android:paddingRight="3dp"
+            android:paddingLeft="3dp"
+            android:text="Turn on/off timestamp in file name"
             android:onClick="left_add_time"/>
+        <!--<Button-->
+            <!--android:id="@+id/left_setlocation"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Set Save Location"-->
+            <!--android:background="#ff9966"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_below="@id/left_addtime"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:onClick="set_save_location"/>-->
         <Button
-            android:id="@+id/left_setlocation"
+            android:id="@+id/left_set_limited_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Set Save Location"
-            android:textSize="16sp"
             android:layout_below="@id/left_addtime"
             android:layout_marginTop="15dp"
-            android:onClick="set_save_location"/>
+            android:paddingRight="3dp"
+            android:paddingLeft="3dp"
+            android:background="#ff0000"
+            android:textSize="16sp"
+            android:text="Set Time Limit"
+            android:onClick="left_set_limited_time"/>
+        <Button
+            android:id="@+id/left_cancel_limited_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/left_set_limited_time"
+            android:layout_marginTop="15dp"
+            android:paddingRight="3dp"
+            android:paddingLeft="3dp"
+            android:background="#ff0000"
+            android:textSize="16sp"
+            android:text="Cancel Time Limit"
+            android:onClick="left_cancel_limited_time"/>
     </RelativeLayout>
     <!--Right-->
     <RelativeLayout

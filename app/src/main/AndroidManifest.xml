@@ -13,6 +13,12 @@
     <!-- 唤醒权限 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -29,7 +35,7 @@
         <activity
             android:name=".ListActivity"
             android:label="ListPage"
-            android:logo="@drawable/list">R
+            android:logo="@drawable/list">
         </activity>
     </application>
 
