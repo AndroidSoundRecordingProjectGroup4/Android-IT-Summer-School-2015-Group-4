@@ -6,20 +6,25 @@
     android:id = "@+id/listmenu">
     <!--<item android:id="@+id/action_settings" android:title="@string/action_settings"-->
         <!--android:orderInCategory="100" app:showAsAction="never" />-->
+    <EditText android:id="@+id/inputSearch"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:showAsAction="always"
+        android:hint="Search record file.."
+        android:inputType="textVisiblePassword"/>
+    <!--<item-->
+        <!--android:id="@+id/list_search"-->
+        <!--android:actionViewClass="android.widget.SearchView"-->
+        <!--android:icon="@drawable/search"-->
+        <!--app:showAsAction="collapseActionView|ifRoom"-->
+        <!--android:title="search"/>-->
     <item
         android:id="@+id/share_button"
         android:title="Share on Google+"
-        android:icon="@drawable/recording_b"
+        android:icon="@drawable/share_p"
         app:showAsAction="always"
         android:visible="false"
         />
-
-    <item
-        android:id="@+id/list_search"
-        android:actionViewClass="android.widget.SearchView"
-        android:icon="@drawable/search"
-        app:showAsAction="ifRoom"
-        android:title="search"/>
     <item
         android:id="@+id/list_delete"
         android:icon="@drawable/delete"
@@ -37,12 +42,6 @@
         android:icon="@drawable/back"
         android:title="back"
         app:showAsAction="always"/>
-
-    <EditText android:id="@+id/inputSearch"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="Search recordings..."
-        android:inputType="textVisiblePassword"/>
     <!--<item-->
         <!--android:id="@+id/list_rename"-->
         <!--android:icon="@drawable/rename"-->

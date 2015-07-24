@@ -10,26 +10,12 @@
         android:layout_height="wrap_content"
         android:padding = "3dp"
         android:textSize="26sp"
-        android:textColor="#ff3333"
+        android:textColor="#FF0000"
         android:singleLine="true"
         android:scrollbars="horizontal"
         android:maxEms="25"
         android:ellipsize="end"
         android:text="Default"/>
-    <!--<ImageButton-->
-        <!--android:id="@+id/pause_list_b"-->
-        <!--android:layout_height="30dp"-->
-        <!--android:layout_width="30dp"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:background="@drawable/pause_b"-->
-        <!--android:tag="playing"/>-->
-    <!--<ImageButton-->
-        <!--android:id="@+id/play_list_b"-->
-        <!--android:layout_height="30dp"-->
-        <!--android:layout_width="30dp"-->
-        <!--android:layout_toLeftOf="@id/pause_list_b"-->
-        <!--android:layout_marginRight="3dp"-->
-        <!--android:background="@drawable/play_b"/  >-->
 
     <ImageButton
         android:id="@+id/delete_item_button"

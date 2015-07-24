@@ -40,6 +40,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.google.android.gms.plus.PlusShare;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -49,17 +51,6 @@ import java.util.logging.LogRecord;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.Scopes;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.drive.Drive;
-import com.google.android.gms.plus.Plus;
-//import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
-//import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.plus.PlusShare;
 
 public class ListActivity extends ActionBarActivity {
     private ListView lv;//files list
@@ -75,7 +66,7 @@ public class ListActivity extends ActionBarActivity {
     private AudioManager audioManager; //sound
     private ArrayList<FilesInf> data=new ArrayList<FilesInf>() ;
     private String reName=null;// new name
-    private String share_nam=null;
+    private String share_name=null;
     private TextView playtime_t;//current time
     private TextView totaltime_t;//total time
     private int maxPro;// 进度条显示最大值
@@ -101,11 +92,6 @@ public class ListActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-     //   GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
-       //         .addApi(Plus.API)
-       //         .addScope(Scopes.PLUS_LOGIN)
-      //          .build();
-
         handler = new Handler(){
             @Override
             public void handleMessage(Message msg){
@@ -120,8 +106,6 @@ public class ListActivity extends ActionBarActivity {
 
         initView();
     }
-
-
 
     /*initialize*/
     private void initView() {
@@ -214,6 +198,8 @@ public class ListActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 playRecord(data.get(position).filepath);
+                longclick=false;
+                invalidateOptionsMenu();
 //                notification.tickerText = "playing:";
             }
         });
@@ -225,7 +211,7 @@ public class ListActivity extends ActionBarActivity {
                 longclick=true;
                 invalidateOptionsMenu();
                 control_path = data.get(position).filepath;
-                share_nam = data.get(position).filename;
+                share_name = data.get(position).filename;
                 control_file = data.get(position);
                 fposition = position;
                 return true;
@@ -318,12 +304,25 @@ public class ListActivity extends ActionBarActivity {
 //                        f.filename.replace(f.filename, reName);
 
                         File tf = new File(path);
-                        tf.renameTo(new File(Environment.getExternalStorageDirectory() + "/myRecordDir/" + reName + ".amr"));
-                        data.clear();
-                        data = sc.simpleScanning(new File(Environment.getExternalStorageDirectory() + "/myRecordDir"));
-                        simpleAdapter.notifyDataSetChanged();
-                        setListView();
-
+                        int r_length = data.size();
+                        int i=0;
+                        if (reName.equals(null))
+                            Toast.makeText(ListActivity.this,"Please put something~",Toast.LENGTH_SHORT).show();
+                        else {
+                            for (i = 0; i < r_length; i++) {
+                                if (data.get(i).filename.equals(reName)) {
+                                    Toast.makeText(ListActivity.this, "The name has already exist,please change name", Toast.LENGTH_SHORT).show();
+                                    break;
+                                }
+                            }
+                            if (i == r_length) {
+                                tf.renameTo(new File(Environment.getExternalStorageDirectory() + "/myRecordDir/" + reName + ".amr"));
+                                data.clear();
+                                data = sc.simpleScanning(new File(Environment.getExternalStorageDirectory() + "/myRecordDir"));
+                                simpleAdapter.notifyDataSetChanged();
+                                setListView();
+                            }
+                        }
                     }
                 });
         builder.show();
@@ -343,17 +342,15 @@ public class ListActivity extends ActionBarActivity {
         setListView();
         simpleAdapter.notifyDataSetChanged();
     }
-
     public void shareRecord(){
         // Launch the Google+ share dialog with attribution to your app.
         Intent shareIntent = new PlusShare.Builder(this)
                 .setType("text/plain")
-                .setText("I am using Group 4's recording application for Android, it is really great! I have made " + data.size() + " recordings. I am listening to "+share_nam )
-                .setContentUrl(Uri.parse("changethislink.com")) //we will change this to be either a download to the recording or to an apk download
+                .setText("I am using Group 4's recording application for Android, it is really great! I have made " + data.size() + " recordings. I am listening to "+share_name )
+                .setContentUrl(Uri.parse("https://github.com/AndroidSoundRecordingProjectGroup4/Android-IT-Summer-School-2015-Group-4")) //we will change this to be either a download to the recording or to an apk download
                 .getIntent();
         startActivityForResult(shareIntent, 0);
     }
-
     /*change to time*/
     public static String formatDuring(long mss) {
         long hours = (mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
@@ -367,17 +364,17 @@ public class ListActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_list, menu);
         MenuItem list_delete_i = menu.findItem(R.id.list_delete);
         MenuItem list_rename_i = menu.findItem(R.id.list_rename);
-        MenuItem list_search_i = menu.findItem(R.id.list_search);
+//        MenuItem list_search_i = menu.findItem(R.id.list_search);
         MenuItem share_b = menu.findItem(R.id.share_button);
         if(longclick==true){
             list_delete_i.setVisible(true);
             list_rename_i.setVisible(true);
-            list_search_i.setVisible(false);
+//            list_search_i.setVisible(false);
             share_b.setVisible(true);
         }else{
             list_delete_i.setVisible(false);
             list_rename_i.setVisible(false);
-            list_search_i.setVisible(true);
+//            list_search_i.setVisible(true);
             share_b.setVisible(false);
         }
         return true;

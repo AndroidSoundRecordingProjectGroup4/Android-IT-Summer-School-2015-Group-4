@@ -1,5 +1,6 @@
 package com.example.leebo.recordsounddemo2;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -38,7 +39,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.gms.common.ConnectionResult;
 
 
 import java.io.File;
@@ -88,6 +88,7 @@ public class MainActivity extends ActionBarActivity {
     private Handler handler;
     private Handler progressBarbHandler = new Handler();
     private float xUp;
+    private ActionBar actionBar;
     private boolean isMenuVisible;
     private VelocityTracker mVelocityTracker;
     private String[] time_select = new String[]{"Add time for the record","Do not add time" };
@@ -209,6 +210,7 @@ public class MainActivity extends ActionBarActivity {
             isRecording=false;
             cancel_b.setEnabled(false);
             timer_text.stop();
+            x=0;
         }
     }
     /*cancel to save the record*/
@@ -300,7 +302,7 @@ public class MainActivity extends ActionBarActivity {
     //fonction time limit
     public void time_Limit_record(final int timeLimit) {
         progress_b.setVisibility(View.VISIBLE);
-        progress_b.setMax(timeLimit);
+        progress_b.setMax(timeLimit+1);
         progress_b.setProgress(0);
         progressBarStatus = 0;
         new Thread(new Runnable() {
@@ -511,7 +513,7 @@ public class MainActivity extends ActionBarActivity {
     /*notification*/
     private void showNotification() {
         NotificationManager barmanager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification notice = new Notification(android.R.drawable.ic_media_play,"Record is running...",System.currentTimeMillis());
+        Notification notice = new Notification(android.R.drawable.ic_media_play,"On Air is running...",System.currentTimeMillis());
         notice.icon = R.drawable.play_n;
         notice.flags= Notification.FLAG_INSISTENT;
         Intent appIntent = new Intent(Intent.ACTION_MAIN);
@@ -519,9 +521,8 @@ public class MainActivity extends ActionBarActivity {
         appIntent.setComponent(new ComponentName(this.getPackageName(), this.getPackageName() + "." + this.getLocalClassName()));
         appIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);//Æô¶¯
         PendingIntent contentIntent =PendingIntent.getActivity(this, 0,appIntent,0);
-        notice.setLatestEventInfo(this,"Record","running", contentIntent);
+        notice.setLatestEventInfo(this,"On Air","running", contentIntent);
         barmanager.notify(0,notice);
-
     }
 
 

@@ -2,172 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.5.0\jars\classes.jar"
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.3.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-2fa7a169487bb96fa621d4289f2fda4abacad8fb.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-fdde90a44affb8a462a75db5272a67648ea0e4c7.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-2b4450402be639a23a048eca03b71f472f022bf9.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-269e20967e78f8f3aa59945f0e5d8b913d3e4b84.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-17ca10b97a669bbda94102ee42620d17e37283a6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-24287526d45cbc54152a840ecef33924194c6294.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-8f816039d8830fe00ece237a7ce201c2a89e7664.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-ca9a96ddc2aa34ea38c4434a5105c7d0e5b176db.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-64fa5544a6830866d079ff76a00129cba0855188.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-0564b148f535a5b3739a2e8f9add8c9f6f5a280c.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a78183f30e769a98ab4820794f597763088d3065">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-1f3f5bc6bdd280b0cea80fc231ec623c5bbfeb38.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d405025c600055237c171a0bbabaa49d69696573">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-66420188fc4995273640cd9dc0b171a41f25be34.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-fc67b424413508d7d75e31ec5f8afed8afa2091f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-494d7e099d46bb15d96da8c9ab6c615346dd78df.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-dd0e6f42259d2f812225a711329af455878d4373.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-c927bd36bc6b8efa55aaafffb62472276b6431ca.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-6f40b00c3abbe69afc96849f0155808f48dd6faa.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-1e3dbfbb1337e479ba25598ea56e7694c3c56f40.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-eb3c5c53cea3bfc6390158d8ab2aa885216ba0bc.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-da2c7268f0e72177237210839077843f5f31aa36.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-1e6a4250b2cf4be465b8973feb94e9b925e5c922.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-d28d8baa68042bc2bd77b55a634bbb89c1dbe537.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-528d7c9f6935a0e1b66061f6edc6d2d1e81eec5c.jar" />
-    </item>
-    <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-20f1e80c21279ce7388801ba3e67c93eff2f21fa.jar" />
+        sha1="f2f7ec211ce4d244ee97a57523eeb4526dc3cf8a">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-35e24761d00b8d0eab7e1c3002dbe4e608cb2828.jar" />
     </item>
     <item
         jar="C:\Users\Keith\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
@@ -177,11 +16,158 @@
         <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-256fc188b0cd1e7898aed4c62f8d6aa62ad4c580.jar" />
     </item>
     <item
-        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\libs\internal_impl-22.0.0.jar"
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.3.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
-        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-a09c2e3c6f1f9967e0178c304537b237d04d2c62.jar" />
+        sha1="a0ce76dfaccbfbd6c551ed2174280aaabe60fe47">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-b8d8476e3a96c96e0f0ba8557b847ce458523fb5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="bb36004beb02b69562cbec9aa7d6a3cf16bf5d1b">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-84781d99c38fca416e04867259edab04971f9743.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0180d031a7b54dabb93b4af3869468b55dc938bd">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-ee3452a20810ff90f8f2e2a285d64d55366d89ad.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5ea948d825957be6c4358c48422bee60eef2d487">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-6c19d21341d2d621e63c9ebd293e03e7e2cc966c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e35fae1b377c23aa5fd2d309a190c2d0f73d54ec">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-8599960150806692875a4b0232680753155c871d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="fe3e0c6de7cceed888b277487238b6af9a1cc299">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-dda19539e1818dc3569cd0646c1ec2aa30bf5ccd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4f4fe3c23776540625f3c2844152a7510fddf9f1">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-2a91aee169f7590089b5dd5b47310c0aad5790dd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b2c07cdb814fe988ad05f7b4d767a841514a5991">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-771d6db9e938027ececd4e7d7770245e38d7ed57.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e5b9f5b0aa8dee788beb63d23832cb29ce771343">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-79b6c2900a0218f7a8e75763a36b94640ec54bce.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6046e5cdaf799120b7c56a5a061d80e8854c4d34">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-6f2d882cbecd870fb96de9f37f419d5f74d5d430.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9c9dea9e85aceb09d95df5e6f7bc8a43fc286068">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-84a0b22433e1b13b7345a0e68b09a9affccb6b47.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="565a01f90f1529f73362707c4c185d0623a68782">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-066a3402ba28bbdc590403b2fc53bf313d352b86.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7215ac1f2fca947b9415a6ee2a1bf991364aab24">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-cbbed77f38a080f6811ea18967a3555c09e7899b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-2b4450402be639a23a048eca03b71f472f022bf9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0708ef60917bf94913fe9ef972a655b99462dca7">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-1cf7bce5f42faf0ef345db2f35e5ad372cf5dde9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b48d5c51a9a9e329005106b4667f54948de4d4d8">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-3c35546b5980e9f1822be199e18f50f57e0edbc8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-0564b148f535a5b3739a2e8f9add8c9f6f5a280c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3b4ff5c39dace8f3b4ab4cab8191785547a0815f">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-b4b2f2a2059fa42aa02000225138f8ffee78595f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3988694bf9d8186ff97ad5cdfa4ed88b5010fe08">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-618e2369933a85774f587d70cb6ee286cc2e673c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-fc67b424413508d7d75e31ec5f8afed8afa2091f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="59652857a825fff0de62166fca1bc9553cc01abb">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-6fdd1c2041c89d86ba3ad559f2baf563daa92275.jar" />
+    </item>
+    <item
+        jar="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e5bf453b070c1e39297986144960e45afa0fdfad">
+        <dex dex="C:\Users\Keith\Documents\GitHub\RecordSoundDemo2\app\build\intermediates\pre-dexed\debug\classes-15623a859c98ac52d080256b50b79caf3f929d0b.jar" />
     </item>
 
 </items>

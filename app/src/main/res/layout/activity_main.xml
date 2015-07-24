@@ -158,13 +158,13 @@
             android:text="Cancel Time Limit"
             android:onClick="left_cancel_limited_time"/>
     </RelativeLayout>
-    <!--Right-->
-    <RelativeLayout
-        android:id="@+id/main_right_drawer_layout"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:background="@android:color/transparent"
-        android:paddingTop="50dp" >
-    </RelativeLayout>
+    <!--&lt;!&ndash;Right&ndash;&gt;-->
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/main_right_drawer_layout"-->
+        <!--android:layout_width="240dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="end"-->
+        <!--android:background="@android:color/transparent"-->
+        <!--android:paddingTop="50dp" >-->
+    <!--</RelativeLayout>-->
 </android.support.v4.widget.DrawerLayout>
